@@ -1,8 +1,12 @@
 <style>
   .media-object {
-    height: 50px;
-    width: 50px;
+    height: 80px;
+    width: 80px;
     border-radius: 100%;
+  }
+
+  .follower-container {
+    padding-top: 30px;
   }
 </style>
 
@@ -15,16 +19,21 @@
   placeholder="Enter github account name and press enter to search">
 
 <div style="padding-top: 30px">
-  <div class="media"
-    *ngFor="let follower of followers">
-    <div class="media-left">
-      <a href="#">
-        <img class="media-object" src="{{follower.avatar_url}}" alt="{{follower.login}}">
-      </a>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 follower-container" *ngFor="let follower of followers">
+
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object" src="{{follower.avatar_url}}" alt="{{follower.login}}">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">{{follower.login}}</h4>
+          <a href="{{follower.html_url}}">{{follower.html_url}}</a>
+        </div>
+      </div>  
+
     </div>
-    <div class="media-body">
-      <h4 class="media-heading">{{follower.login}}</h4>
-      <a href="{{follower.html_url}}">{{follower.html_url}}</a>
-    </div>
-  </div>  
+  </div>
 </div>
