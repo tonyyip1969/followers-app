@@ -30,11 +30,10 @@ export class FollowersComponent implements OnInit {
   }
 
   getFollowers(name: string) {
-    this.service.getAll()
+    this.service.getAll(name)
       .subscribe(
         (followers) => {
           this.followers = followers;
-          console.log(this.followers);
         }
       );
   }
