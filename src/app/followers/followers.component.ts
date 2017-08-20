@@ -1,12 +1,6 @@
 import { FollowersService } from './../services/followers.service';
 import { Component, OnInit } from '@angular/core';
 
-interface IFollowers {
-  user_id: string;
-  avatar_url: string;
-  url: string;
-}
-
 @Component({
   selector: 'app-followers',
   templateUrl: './followers.component.html',
@@ -15,6 +9,7 @@ interface IFollowers {
 export class FollowersComponent implements OnInit {
 
   followers = [];
+  error_message: string;
 
   constructor(private service: FollowersService) { }
 
@@ -34,6 +29,9 @@ export class FollowersComponent implements OnInit {
       .subscribe(
         (followers) => {
           this.followers = followers;
+          if (this.followers.length === 0) {
+            this.error_message = 'No follower has found!';
+          }
         }
       );
   }

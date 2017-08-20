@@ -1,5 +1,5 @@
 <style>
-  .media-object {
+  .avatar {
     height: 80px;
     width: 80px;
     border-radius: 100%;
@@ -19,21 +19,30 @@
   placeholder="Enter github account name and press enter to search">
 
 <div style="padding-top: 30px">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 follower-container" *ngFor="let follower of followers">
-
-      <div class="media">
-        <div class="media-left">
-          <a href="#">
-            <img class="media-object" src="{{follower.avatar_url}}" alt="{{follower.login}}">
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">{{follower.login}}</h4>
-          <a href="{{follower.html_url}}">{{follower.html_url}}</a>
-        </div>
-      </div>  
-
-    </div>
-  </div>
+  <div *ngIf="followers.length>0; then hasFollower; else noFollower"></div>
 </div>
+
+<ng-template #noFollower>
+  <h4>{{ error_message }}</h4>
+</ng-template>
+
+<ng-template #hasFollower>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 follower-container" 
+          *ngFor="let follower of followers">
+
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object avatar" src="{{follower.avatar_url}}" alt="{{follower.login}}">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{follower.login}}</h4>
+              <a href="{{follower.html_url}}">{{follower.html_url}}</a>
+            </div>
+          </div>  
+    
+        </div>
+      </div>
+</ng-template>

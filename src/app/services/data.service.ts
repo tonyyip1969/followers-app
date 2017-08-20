@@ -45,14 +45,18 @@ export class DataService {
   }
 
   private handleError(error: Response) {
+    console.log(error);
+
     if (error.status === 400) {
       return Observable.throw(new BadInput(error.json()));
     }
 
     if (error.status === 404) {
+      console.log('404');
       return Observable.throw(new NotFoundError());
     }
 
+    console.log('testing');
     return Observable.throw(new AppError(error));
   }
 }
