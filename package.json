@@ -8,7 +8,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-deploy": "ng build --prod --base-href=https://tonyyip1969.github.io/followers-app/ && angular-cli-ghpages",
+    "deploy": "angular-cli-ghpages"
   },
   "private": true,
   "dependencies": {
